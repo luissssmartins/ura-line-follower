@@ -11,13 +11,13 @@ class L9110H {
 
       void motor(int motorNumber, String instruction, int speed);
 
-      void forward(int i, int seconds, bool hasStop);
+      void forward(int i, bool hasStop);
 
-      void backward(int i, int seconds, bool hasStop);
+      void backward(int i, bool hasStop);
 
-      void right(int i, int seconds, bool hasStop);
+      void right(int i, bool hasStop);
 
-      void left(int i, int seconds, bool hasStop);
+      void left(int i, bool hasStop);
 
       void stop();
 

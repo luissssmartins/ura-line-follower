@@ -12,14 +12,14 @@ void L9110H::motor(int motorNumber, String instruction, int speed) {
     switch (motorNumber) {
 
         case 1: {
-            pinA = 11;
-            pinB = 10;
+            pinA = 4;
+            pinB = 5;
             break;
         }
 
         case 2: {
-            pinA = 9;
-            pinB = 8;
+            pinA = 7;
+            pinB = 6;
             break;
         }
 
@@ -40,7 +40,7 @@ void L9110H::motor(int motorNumber, String instruction, int speed) {
     }
 }
 
-void L9110H::forward(int i, int seconds, bool hasStop) {
+void L9110H::forward(int i, bool hasStop) {
     motor(1, "BACKWARD", i);
     motor(2, "FORWARD", i);
 
@@ -49,33 +49,27 @@ void L9110H::forward(int i, int seconds, bool hasStop) {
     }
 }
 
-void L9110H::backward(int i, int seconds, bool hasStop) {
+void L9110H::backward(int i, bool hasStop) {
     motor(1, "FORWARD", i);
     motor(2, "BACKWARD", i);
-
-    delay(seconds);
 
     if (hasStop) {
         stop();
     }
 }
 
-void L9110H::right(int i, int seconds, bool hasStop) {
+void L9110H::right(int i, bool hasStop) {
     motor(1, "BACKWARD", i);
     motor(2, "BACKWARD", i);
 
-    delay(seconds);
-
     if (hasStop) {
         stop();
     }
 }
 
-void L9110H::left(int i, int seconds, bool hasStop) {
+void L9110H::left(int i, bool hasStop) {
     motor(1, "FORWARD", i);
     motor(2, "FORWARD", i);
-
-    delay(seconds);
 
     if (hasStop) {
         stop();

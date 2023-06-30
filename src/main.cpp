@@ -1,8 +1,8 @@
 #include <Arduino.h>
 #include <L9110H.h>
 
-#define rightSensor 4
-#define leftSensor 5
+#define rightSensor 3
+#define leftSensor 2
 
 bool isRight, isLeft;
 
@@ -17,25 +17,52 @@ void setup() {
 }
 
 void loop() {
+
   isRight = digitalRead(rightSensor);
   isLeft = digitalRead(leftSensor);
 
-  if (isRight == 0 && isLeft == 0) {
-    robot.forward(255, 50, false);
+  Serial.print("direita");
+  Serial.println(isRight);
+
+  Serial.print("esquerda");
+  Serial.println(isLeft);
+
+  if (isRight == 1 && isLeft == 1) {
+    robot.forward(255, false);
+
+    delay(50);
+
     return;
 
-  } else if (isRight == 1 && isLeft == 1) {
+  } else if (isRight == 0 && isLeft == 0) {
+
     robot.stop();
-    return;
 
-  } else if (isLeft == 1 && isRight == 0) {
-    robot.left(255, 50, true);
-    return;
+    delay(2000);
 
-  } else if (isRight == 1 && isLeft == 0) {
-    robot.right(255, 50, true);
     return;
   }
 
-  delay(10000);
+  // if (isRight == 0 && isLeft == 0) {
+  //   robot.forward(255, 50, true);
+    
+  //   delay(50);
+
+  // } else if (isRight == 1 && isLeft == 1) {
+  //   robot.stop();
+
+  //   delay(2000);
+
+  // } else if (isLeft == 1 && isRight == 0) {
+  //   robot.left(255, 50, true);
+
+  //   delay(50);
+
+  // } else if (isRight == 1 && isLeft == 0) {
+  //   robot.right(255, 50, true);
+
+  //   delay(50);
+  // }
+
+  delay(1000);
 }
